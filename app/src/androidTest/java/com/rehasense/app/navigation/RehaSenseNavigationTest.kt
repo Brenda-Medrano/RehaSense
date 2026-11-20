@@ -4,6 +4,8 @@ import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsNotEnabled
 import androidx.compose.ui.test.assertIsEnabled
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import androidx.compose.ui.test.onNodeWithTag
+import androidx.compose.ui.test.performTextInput
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
@@ -26,6 +28,12 @@ class RehaSenseNavigationTest {
         node(R.string.nav_select_title).assertIsDisplayed()
     }
 
+    private fun createProfile(name: String) {
+        node(R.string.profile_create_title).assertIsDisplayed()
+        compose.onNodeWithTag("profile_name_input").performScrollTo().performTextInput(name)
+        node(R.string.profile_create_action).performScrollTo().performClick()
+    }
+
     @Test
     fun welcomeOpensProfileSelection() {
         node(R.string.nav_welcome_title).assertIsDisplayed()
@@ -38,6 +46,7 @@ class RehaSenseNavigationTest {
         selectProfileScreen()
         node(R.string.nav_patient).performScrollTo().performClick()
         node(R.string.nav_continue).performScrollTo().assertIsEnabled().performClick()
+        createProfile("Ana")
         node(R.string.nav_patient_home).assertIsDisplayed()
     }
 
@@ -46,6 +55,7 @@ class RehaSenseNavigationTest {
         selectProfileScreen()
         node(R.string.nav_physiotherapist).performScrollTo().performClick()
         node(R.string.nav_continue).performScrollTo().performClick()
+        createProfile("Carlos")
         node(R.string.nav_physiotherapist_home).assertIsDisplayed()
     }
 
@@ -54,10 +64,22 @@ class RehaSenseNavigationTest {
         selectProfileScreen()
         node(R.string.nav_patient).performScrollTo().performClick()
         node(R.string.nav_continue).performScrollTo().performClick()
+        createProfile("Ana")
         node(R.string.nav_change_profile).performScrollTo().performClick()
         node(R.string.nav_physiotherapist).performScrollTo().performClick()
         node(R.string.nav_continue).performScrollTo().performClick()
+        createProfile("Carlos")
         node(R.string.nav_physiotherapist_home).assertIsDisplayed()
+    }
+
+    @Test
+    fun blankNameShowsValidationAndKeepsRegistrationOpen() {
+        selectProfileScreen()
+        node(R.string.nav_patient).performScrollTo().performClick()
+        node(R.string.nav_continue).performScrollTo().performClick()
+        node(R.string.profile_create_action).performScrollTo().performClick()
+        node(R.string.profile_name_required).performScrollTo().assertIsDisplayed()
+        node(R.string.profile_create_title).performScrollTo().assertIsDisplayed()
     }
 
     @Test

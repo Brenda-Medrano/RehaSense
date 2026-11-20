@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_create_title">Crear perfil local</string>
+    <string name="profile_demo_notice">Utiliza un nombre de prueba. Esta versión no guarda el perfil de forma permanente ni verifica tu identidad.</string>
+    <string name="profile_name_label">Nombre</string>
+    <string name="profile_name_required">Introduce un nombre válido.</string>
+    <string name="profile_create_action">Crear perfil</string>
+    <string name="profile_greeting">Hola, %1$s</string>
+    <string name="profile_temporary_notice">Perfil temporal. Al cambiar de perfil o cerrar el proceso de la aplicación perderás estos datos.</string>
+    <string name="profile_future_features">Funciones previstas</string>
+    <string name="profile_not_available">Próximamente</string>
+    <string name="profile_feature_exercises">Ejercicios</string>
+    <string name="profile_feature_sessions">Sesiones</string>
+    <string name="profile_feature_history">Historial y evolución</string>
+    <string name="profile_feature_sensors">Sensores</string>
+    <string name="profile_feature_patients">Pacientes</string>
+    <string name="profile_feature_programs">Programas de rehabilitación</string>
+    <string name="profile_feature_results">Resultados</string>
+    <string name="profile_feature_compare">Comparar sesiones</string>
+</resources>

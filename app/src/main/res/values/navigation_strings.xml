@@ -15,7 +15,5 @@
     <string name="nav_continue">Continuar</string>
     <string name="nav_patient_home">Inicio del paciente</string>
     <string name="nav_physiotherapist_home">Panel del fisioterapeuta</string>
-    <string name="nav_home_pending_title">Perfil seleccionado</string>
-    <string name="nav_home_pending_description">Los paneles y el registro de perfiles se incorporarán en el siguiente parche. No se guardaron datos personales.</string>
     <string name="nav_change_profile">Cambiar perfil</string>
 </resources>
