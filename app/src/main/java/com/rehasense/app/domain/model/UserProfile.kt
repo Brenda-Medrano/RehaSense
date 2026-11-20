@@ -11,6 +11,12 @@ data class PatientProfile(
     override val userId: String,
     val patientId: String
 ) : UserProfile {
+    init {
+        require(id.isNotBlank()) { "Profile ID must not be blank" }
+        require(userId.isNotBlank()) { "User ID must not be blank" }
+        require(patientId.isNotBlank()) { "Patient ID must not be blank" }
+    }
+
     override val role = UserRole.PATIENT
 }
 
@@ -19,5 +25,11 @@ data class PhysiotherapistProfile(
     override val userId: String,
     val physiotherapistId: String
 ) : UserProfile {
+    init {
+        require(id.isNotBlank()) { "Profile ID must not be blank" }
+        require(userId.isNotBlank()) { "User ID must not be blank" }
+        require(physiotherapistId.isNotBlank()) { "Physiotherapist ID must not be blank" }
+    }
+
     override val role = UserRole.PHYSIOTHERAPIST
 }
