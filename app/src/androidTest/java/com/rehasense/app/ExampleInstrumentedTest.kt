@@ -1,4 +1,4 @@
-package com.example.proyectofinalprogramovil
+package com.rehasense.app
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,13 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.example.proyectofinalprogramovil", appContext.packageName)
+        assertEquals("com.rehasense.app", appContext.packageName)
+    }
+
+    @org.junit.Test
+    fun appLabelIsRehaSense() {
+        val appContext = androidx.test.platform.app.InstrumentationRegistry.getInstrumentation().targetContext
+        val label = appContext.applicationInfo.loadLabel(appContext.packageManager)
+        org.junit.Assert.assertEquals("RehaSense", label.toString())
     }
 }

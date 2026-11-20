@@ -1,4 +1,4 @@
-package com.example.proyectofinalprogramovil
+package com.rehasense.app
 
 import org.junit.Test
 

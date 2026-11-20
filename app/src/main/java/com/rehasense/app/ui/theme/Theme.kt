@@ -1,4 +1,4 @@
-package com.example.proyectofinalprogramovil.ui.theme
+package com.rehasense.app.ui.theme
 
 import android.app.Activity
 import android.os.Build
@@ -34,7 +34,7 @@ private val LightColorScheme = lightColorScheme(
 )
 
 @Composable
-fun ProyectoFinalPrograMovilTheme(
+fun RehaSenseTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,

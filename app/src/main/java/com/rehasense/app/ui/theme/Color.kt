@@ -1,4 +1,4 @@
-package com.example.proyectofinalprogramovil.ui.theme
+package com.rehasense.app.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

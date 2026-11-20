@@ -4,13 +4,13 @@ plugins {
 }
 
 android {
-    namespace = "com.example.proyectofinalprogramovil"
+    namespace = "com.rehasense.app"
     compileSdk {
         version = release(37)
     }
 
     defaultConfig {
-        applicationId = "com.example.proyectofinalprogramovil"
+        applicationId = "com.rehasense.app"
         minSdk = 26
         targetSdk = 37
         versionCode = 1
