@@ -33,6 +33,23 @@ interface RehabilitationDao {
     @Insert(onConflict = OnConflictStrategy.ABORT)
     fun insertResult(result: BiomechanicalResultEntity)
 
+    @Query("SELECT * FROM profiles WHERE id = :profileId LIMIT 1")
+    fun findProfileById(profileId: String): ProfileEntity?
+
+    @Query("""
+        SELECT profiles.* FROM profiles
+        INNER JOIN users ON users.id = profiles.userId
+        WHERE profiles.role = :role
+        ORDER BY users.createdAtEpochMillis DESC, profiles.id DESC LIMIT 1
+    """)
+    fun findLatestProfileByRole(role: String): ProfileEntity?
+
+    @Query("SELECT * FROM patients WHERE profileId = :profileId LIMIT 1")
+    fun findPatientByProfileId(profileId: String): PatientEntity?
+
+    @Query("SELECT * FROM physiotherapists WHERE profileId = :profileId LIMIT 1")
+    fun findPhysiotherapistByProfileId(profileId: String): PhysiotherapistEntity?
+
     @Query("SELECT * FROM program_exercises WHERE programId = :programId ORDER BY sortOrder ASC")
     fun findExercisesForProgram(programId: String): List<ProgramExerciseEntity>
 
