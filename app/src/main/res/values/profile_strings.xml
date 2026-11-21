@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="profile_create_title">Crear perfil local</string>
-    <string name="profile_demo_notice">Utiliza un nombre de prueba. Esta versión no guarda el perfil de forma permanente ni verifica tu identidad.</string>
+    <string name="profile_demo_notice">Utiliza datos de prueba. El perfil se guarda localmente, sin inicio de sesión ni cifrado integral.</string>
     <string name="profile_name_label">Nombre</string>
     <string name="profile_name_required">Introduce un nombre válido.</string>
     <string name="profile_create_action">Crear perfil</string>
+    <string name="profile_restore_action">Recuperar último perfil de este rol</string>
+    <string name="profile_restore_empty">No hay un perfil guardado para este rol.</string>
+    <string name="profile_busy">Procesando datos locales…</string>
+    <string name="profile_save_error">No se pudo acceder al almacenamiento local. Inténtalo de nuevo.</string>
     <string name="profile_greeting">Hola, %1$s</string>
-    <string name="profile_temporary_notice">Perfil temporal. Al cambiar de perfil o cerrar el proceso de la aplicación perderás estos datos.</string>
+    <string name="profile_temporary_notice">Perfil guardado en este dispositivo. No existe autenticación; no introduzcas datos clínicos reales.</string>
     <string name="profile_future_features">Funciones previstas</string>
     <string name="profile_not_available">Próximamente</string>
     <string name="profile_feature_exercises">Ejercicios</string>

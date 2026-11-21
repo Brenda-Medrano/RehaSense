@@ -22,6 +22,7 @@ internal fun ProfileRegistrationScreen(
     state: ProfileUiState,
     onNameChanged: (String) -> Unit,
     onSubmit: () -> Unit,
+    onRestore: () -> Unit,
     onBack: () -> Unit
 ) {
     OnboardingLayout {
@@ -44,9 +45,29 @@ internal fun ProfileRegistrationScreen(
             keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Words),
             modifier = Modifier.fillMaxWidth().testTag("profile_name_input")
         )
+        if (state.saveError) {
+            Text(
+                stringResource(R.string.profile_save_error),
+                color = MaterialTheme.colorScheme.error,
+                style = MaterialTheme.typography.bodyMedium
+            )
+        }
+        if (state.restoreNotFound) {
+            Text(stringResource(R.string.profile_restore_empty), style = MaterialTheme.typography.bodyMedium)
+        }
+        if (state.isBusy) {
+            Text(stringResource(R.string.profile_busy), style = MaterialTheme.typography.bodyMedium)
+        }
         RehaSenseButton(
             text = stringResource(R.string.profile_create_action),
             onClick = onSubmit,
+            enabled = !state.isBusy,
+            modifier = Modifier.fillMaxWidth()
+        )
+        RehaSenseButton(
+            text = stringResource(R.string.profile_restore_action),
+            onClick = onRestore,
+            enabled = !state.isBusy,
             modifier = Modifier.fillMaxWidth()
         )
     }
