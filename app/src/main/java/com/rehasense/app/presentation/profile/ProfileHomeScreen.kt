@@ -6,12 +6,17 @@ import androidx.compose.ui.platform.LocalContext
 import com.rehasense.app.di.RehaSenseGraph
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.rehasense.app.domain.model.UserRole
+import com.rehasense.app.domain.repository.ProfileRepository
 
 /** The existing role destination owns the registration form and the resulting dashboard. */
 @Composable
-internal fun ProfileHomeScreen(role: UserRole, onChangeProfile: () -> Unit) {
+internal fun ProfileHomeScreen(
+    role: UserRole,
+    onChangeProfile: () -> Unit,
+    repositoryOverride: ProfileRepository? = null
+) {
     val appContext = LocalContext.current.applicationContext
-    val repository = remember(appContext) { RehaSenseGraph.profileRepository(appContext) }
+    val repository = repositoryOverride ?: remember(appContext) { RehaSenseGraph.profileRepository(appContext) }
     val model: ProfileViewModel = viewModel(factory = ProfileViewModel.Factory(repository))
     val state = model.uiState
     val profile = state.profile

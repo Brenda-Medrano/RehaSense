@@ -21,6 +21,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
@@ -39,12 +40,14 @@ internal fun ProfileSelectionScreen(onBack: () -> Unit, onContinue: (UserRole) -
         Column(modifier = Modifier.selectableGroup(), verticalArrangement = Arrangement.spacedBy(12.dp)) {
             RoleOption(
                 title = stringResource(R.string.nav_patient),
+                tag = "nav_role_patient",
                 description = stringResource(R.string.nav_patient_description),
                 selected = selectedRole == UserRole.PATIENT,
                 onSelect = { selectedRole = UserRole.PATIENT }
             )
             RoleOption(
                 title = stringResource(R.string.nav_physiotherapist),
+                tag = "nav_role_physiotherapist",
                 description = stringResource(R.string.nav_physiotherapist_description),
                 selected = selectedRole == UserRole.PHYSIOTHERAPIST,
                 onSelect = { selectedRole = UserRole.PHYSIOTHERAPIST }
@@ -54,13 +57,13 @@ internal fun ProfileSelectionScreen(onBack: () -> Unit, onContinue: (UserRole) -
             text = stringResource(R.string.nav_continue),
             enabled = selectedRole != null,
             onClick = { selectedRole?.let(onContinue) },
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth().testTag("nav_continue_button")
         )
     }
 }
 
 @Composable
-private fun RoleOption(title: String, description: String, selected: Boolean, onSelect: () -> Unit) {
+private fun RoleOption(title: String, description: String, tag: String, selected: Boolean, onSelect: () -> Unit) {
     Surface(
         modifier = Modifier.fillMaxWidth(),
         shape = MaterialTheme.shapes.large,
@@ -71,6 +74,7 @@ private fun RoleOption(title: String, description: String, selected: Boolean, on
         Row(
             modifier = Modifier.fillMaxWidth().heightIn(min = 64.dp)
                 .selectable(selected = selected, onClick = onSelect, role = Role.RadioButton)
+                .testTag(tag)
                 .padding(16.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(12.dp)

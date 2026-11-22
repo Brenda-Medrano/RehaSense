@@ -62,13 +62,13 @@ internal fun ProfileRegistrationScreen(
             text = stringResource(R.string.profile_create_action),
             onClick = onSubmit,
             enabled = !state.isBusy,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth().testTag("profile_create_button")
         )
         RehaSenseButton(
             text = stringResource(R.string.profile_restore_action),
             onClick = onRestore,
             enabled = !state.isBusy,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth().testTag("profile_restore_button")
         )
     }
 }

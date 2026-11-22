@@ -6,12 +6,16 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.rehasense.app.domain.model.UserRole
+import com.rehasense.app.domain.repository.ProfileRepository
 import com.rehasense.app.presentation.profile.ProfileSelectionScreen
 import com.rehasense.app.presentation.profile.ProfileHomeScreen
 import com.rehasense.app.presentation.welcome.WelcomeScreen
 
 @Composable
-fun RehaSenseNavHost(modifier: Modifier = Modifier) {
+fun RehaSenseNavHost(
+    modifier: Modifier = Modifier,
+    profileRepository: ProfileRepository? = null
+) {
     val navController = rememberNavController()
     NavHost(
         navController = navController,
@@ -38,12 +42,14 @@ fun RehaSenseNavHost(modifier: Modifier = Modifier) {
         composable(Destination.PATIENT_HOME.route) {
             ProfileHomeScreen(
                 role = UserRole.PATIENT,
+                repositoryOverride = profileRepository,
                 onChangeProfile = { navController.popBackStack() }
             )
         }
         composable(Destination.PHYSIOTHERAPIST_HOME.route) {
             ProfileHomeScreen(
                 role = UserRole.PHYSIOTHERAPIST,
+                repositoryOverride = profileRepository,
                 onChangeProfile = { navController.popBackStack() }
             )
         }

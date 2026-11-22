@@ -5,6 +5,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import com.rehasense.app.R
 import com.rehasense.app.core.designsystem.components.RehaSenseButton
@@ -40,6 +41,6 @@ internal fun ProfileDashboard(profile: LocalUserProfile, onChangeProfile: () -> 
             }
         }
         RehaSenseButton(text = stringResource(R.string.nav_change_profile), onClick = onChangeProfile,
-            modifier = Modifier.fillMaxWidth())
+            modifier = Modifier.fillMaxWidth().testTag("nav_change_profile_button"))
     }
 }
