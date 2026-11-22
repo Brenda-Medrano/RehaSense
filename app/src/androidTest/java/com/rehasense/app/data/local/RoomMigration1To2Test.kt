@@ -29,12 +29,24 @@ class RoomMigration1To2Test {
                 )
                 oldDb.version = 1
             }
-            Room.databaseBuilder(context, RehaSenseDatabase::class.java, name)
+
+            val migrated = Room.databaseBuilder(
+                context,
+                RehaSenseDatabase::class.java,
+                name
+            )
                 .addMigrations(MIGRATION_1_2)
-                .build().use { migrated ->
-                    assertEquals("Legacy test", migrated.userDao().findById("old-user")?.name)
-                    assertNotNull(migrated.rehabilitationDao())
-                }
+                .build()
+
+            try {
+                assertEquals(
+                    "Legacy test",
+                    migrated.userDao().findById("old-user")?.name
+                )
+                assertNotNull(migrated.rehabilitationDao())
+            } finally {
+                migrated.close()
+            }
         } finally {
             context.deleteDatabase(name)
         }
