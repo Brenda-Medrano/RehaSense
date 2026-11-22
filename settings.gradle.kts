@@ -22,6 +22,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "ProyectoFinalPrograMovil"
+rootProject.name = "RehaSense"
 include(":app")
  
