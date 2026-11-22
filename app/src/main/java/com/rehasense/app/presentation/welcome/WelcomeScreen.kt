@@ -19,7 +19,7 @@ internal fun WelcomeScreen(onStart: () -> Unit) {
             color = MaterialTheme.colorScheme.primary)
         Text(stringResource(R.string.nav_welcome_title), style = MaterialTheme.typography.headlineSmall)
         Text(stringResource(R.string.nav_welcome_description), style = MaterialTheme.typography.bodyLarge)
-        RehaSenseCard(modifier = Modifier.fillMaxWidth().testTag("nav_start_button")) {
+        RehaSenseCard(modifier = Modifier.fillMaxWidth().testTag("nav_local_info_card")) {
             Text(stringResource(R.string.nav_local_title), style = MaterialTheme.typography.titleLarge)
             Text(stringResource(R.string.nav_local_description), style = MaterialTheme.typography.bodyMedium)
         }
