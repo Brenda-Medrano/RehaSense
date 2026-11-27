@@ -1,4 +1,5 @@
 plugins {
+    alias(libs.plugins.google.services)
     alias(libs.plugins.ksp)
     alias(libs.plugins.room)
     alias(libs.plugins.android.application)
@@ -43,6 +44,9 @@ room {
 }
 
 dependencies {
+    implementation(libs.firebase.firestore)
+    implementation(libs.firebase.auth)
+    implementation(platform(libs.firebase.bom))
     implementation(libs.androidx.room.runtime)
     ksp(libs.androidx.room.compiler)
     implementation(platform(libs.androidx.compose.bom))
